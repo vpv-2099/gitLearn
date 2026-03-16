@@ -15,30 +15,37 @@ public class ProductsPage {
     }
 
     public void selectProduct(String productName){
-        if(productName.equals("Sauce Labs Backpack")){
-            By name = By.name("add-to-cart-sauce-labs-backpack");
-            wait.until(ExpectedConditions.elementToBeClickable(name));
-            driver.findElement(name).click();
-        } else if(productName.equals("Sauce Labs Bike Light")){
-            By name = By.name("add-to-cart-sauce-labs-bike-light");
-            wait.until(ExpectedConditions.elementToBeClickable(name));
-            driver.findElement(name).click();
-        } else if(productName.equals("Sauce Labs Bolt T-Shirt")){
-            By name = By.name("add-to-cart-sauce-labs-bolt-t-shirt");
-            wait.until(ExpectedConditions.elementToBeClickable(name));
-            driver.findElement(name).click();
-        } else if (productName.equals("Sauce Labs Fleece Jacket")){
-            By name = By.name("add-to-cart-sauce-labs-fleece-jacket");
-            wait.until(ExpectedConditions.elementToBeClickable(name));
-            driver.findElement(name).click();
-        } else if(productName.equals("Sauce Labs Onesie")){
-            By name = By.name("add-to-cart-sauce-labs-onesie");
-            wait.until(ExpectedConditions.elementToBeClickable(name));
-            driver.findElement(name).click();
-        } else {
-            By name = By.name("add-to-cart-test.allthethings()-t-shirt-(red)");
-            wait.until(ExpectedConditions.elementToBeClickable(name));
-            driver.findElement(name).click();
+        switch (productName) {
+            case "Sauce Labs Backpack" -> {
+                By name = By.name("add-to-cart-sauce-labs-backpack");
+                wait.until(ExpectedConditions.elementToBeClickable(name));
+                driver.findElement(name).click();
+            }
+            case "Sauce Labs Bike Light" -> {
+                By name = By.name("add-to-cart-sauce-labs-bike-light");
+                wait.until(ExpectedConditions.elementToBeClickable(name));
+                driver.findElement(name).click();
+            }
+            case "Sauce Labs Bolt T-Shirt" -> {
+                By name = By.name("add-to-cart-sauce-labs-bolt-t-shirt");
+                wait.until(ExpectedConditions.elementToBeClickable(name));
+                driver.findElement(name).click();
+            }
+            case "Sauce Labs Fleece Jacket" -> {
+                By name = By.name("add-to-cart-sauce-labs-fleece-jacket");
+                wait.until(ExpectedConditions.elementToBeClickable(name));
+                driver.findElement(name).click();
+            }
+            case "Sauce Labs Onesie" -> {
+                By name = By.name("add-to-cart-sauce-labs-onesie");
+                wait.until(ExpectedConditions.elementToBeClickable(name));
+                driver.findElement(name).click();
+            }
+            default -> {
+                By name = By.name("add-to-cart-test.allthethings()-t-shirt-(red)");
+                wait.until(ExpectedConditions.elementToBeClickable(name));
+                driver.findElement(name).click();
+            }
         }
     }
 }
