@@ -30,6 +30,7 @@ public class ProductsPage {
                 By name = By.name("add-to-cart-sauce-labs-bolt-t-shirt");
                 wait.until(ExpectedConditions.elementToBeClickable(name));
                 driver.findElement(name).click();
+                //new Comment
             }
             case "Sauce Labs Fleece Jacket" -> {
                 By name = By.name("add-to-cart-sauce-labs-fleece-jacket");
