@@ -1,1 +1,2 @@
 Will this come as a new line ?
+Now it should come as a new line
