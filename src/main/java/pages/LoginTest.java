@@ -1,9 +1,11 @@
 package pages;
 
+import config.ConfigData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import java.io.IOException;
 
 public class LoginTest {
     WebDriver driver;
@@ -12,8 +14,10 @@ public class LoginTest {
         this.driver = driver;
         this.wait = wait;
     }
-    public void getUrl(){
-        driver.get("https://www.saucedemo.com/");
+    public void getUrl() throws IOException {
+        ConfigData data = new ConfigData();
+        String url = data.retrunPropertyValue("url");
+        driver.get(url);
     }
     public void enterUserAndPwd(String username, String password){
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("user-name")));
