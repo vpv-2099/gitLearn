@@ -1,6 +1,6 @@
 import base.DriverClose;
-import base.DriverInitialisation;
-import base.TakeSS;
+import driver.DriverInitialisation;
+import utils.TakeSS;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
