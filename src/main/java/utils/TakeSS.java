@@ -18,7 +18,7 @@ public class TakeSS {
         }
     }
     public void takeSS() throws IOException {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd_MM_yy_HH_mm_ss_SSS");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd_MMM_yyyy_HH_mm_ss_SSS");
         String formattedDate = LocalDateTime.now().format(formatter);
         TakesScreenshot ts = (TakesScreenshot) driver;
         File src = ts.getScreenshotAs(OutputType.FILE);
