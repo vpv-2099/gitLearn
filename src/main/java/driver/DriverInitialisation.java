@@ -15,23 +15,44 @@ public class DriverInitialisation {
 
     public WebDriver initDriver() {
         ChromeOptions options = new ChromeOptions();
+
+        // ✅ Detect Docker (Chromium) vs Local (Chrome)
+        String chromeBin = System.getenv("CHROME_BIN");
+        if (chromeBin != null && !chromeBin.isEmpty()) {
+            options.setBinary(chromeBin); // used in Docker
+        }
+
+        // ✅ Headless support
         String headless = System.getProperty("headless");
         if ("true".equalsIgnoreCase(headless)) {
             options.addArguments("--headless=new");
         }
-        options.addArguments("--disable-gpu");
-        options.addArguments("--window-size=1920,1080");
+
+        // ✅ Required for Docker stability
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
+
+        // ✅ Optional but useful
+        options.addArguments("--disable-gpu");
+        options.addArguments("--window-size=1920,1080");
+
+        // ✅ Disable Chrome popups
         Map<String, Object> prefs = new HashMap<>();
         prefs.put("credentials_enable_service", false);
         prefs.put("profile.password_manager_enabled", false);
-        prefs.put("profile.password_manager_leak_detection", false); // THIS disables breach warning
+        prefs.put("profile.password_manager_leak_detection", false);
         options.setExperimentalOption("prefs", prefs);
+
         driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
+
+        // ⚠️ Avoid maximize in headless (can fail in Docker)
+        if (!"true".equalsIgnoreCase(headless)) {
+            driver.manage().window().maximize();
+        }
+
         return driver;
     }
+
     public WebDriverWait initWait() {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         return wait;
