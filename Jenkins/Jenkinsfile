@@ -1,9 +1,13 @@
 pipeline {
     agent {
         docker {
-            image 'selenium/standalone-chrome'
+            image 'seleniarm/standalone-chromium'
             args '--shm-size=2g'
         }
+    }
+
+    environment {
+        SELENIUM_REMOTE_URL = "http://localhost:4444/wd/hub"
     }
 
     stages {
