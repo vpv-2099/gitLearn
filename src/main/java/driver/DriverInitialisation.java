@@ -28,6 +28,7 @@ public class DriverInitialisation {
         options.setExperimentalOption("prefs", prefs);
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
+        System.out.println("Launched successfully");
         return driver;
     }
 
