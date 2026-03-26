@@ -14,6 +14,13 @@ public class DriverInitialisation {
 
     public WebDriver initDriver() {
         ChromeOptions options = new ChromeOptions();
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-popup-blocking");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--disable-infobars");
+        options.addArguments("--headless");
         Map<String, Object> prefs = new HashMap<>();
         prefs.put("credentials_enable_service", false);
         prefs.put("profile.password_manager_enabled", false);
